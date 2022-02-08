@@ -12,11 +12,15 @@ class ListsController < ApplicationController
   list.save
   #トップ画面へのリダイレクト
 
-  redirect_to '/top'
+  redirect_to list_path(list.id)
+ end
+
+  def index
+    @lists = List.all
   end
-
-
+  
   def show
+    @list = List.find(params[:id])
   end
 
   def edit
